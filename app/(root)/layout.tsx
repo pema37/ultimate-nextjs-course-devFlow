@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
-import Navbar from '@/components/ui/navigation/navbar';
-import LeftSideBar from '@/components/ui/navigation/LeftSideBar';
-import RightSideBar from '@/components/ui/navigation/RightSideBar';
+import Navbar from '@/components/navigation/navbar';
+import LeftSidebar from '@/components/navigation/LeftSidebar';
+import RightSideBar from '@/components/navigation/RightSideBar';
 
 
 
@@ -11,7 +11,7 @@ const RootLayout = ({ children}: { children: ReactNode }) => {
       <Navbar/>
 
       <div className='flex'>
-        <LeftSideBar />
+        <LeftSidebar />
 
         <section className='flex min-h-screen flex-1 flex-col px-6 pb-6 pt-36 max-md:pb-14 sm:px-14'>
           {children}

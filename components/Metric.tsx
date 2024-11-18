@@ -20,8 +20,8 @@ const Metric = ({
   title,
   href,
   textStyles,
-  imgStyles = "",
-  isAuthor = false,
+  imgStyles,
+  isAuthor,
 }: Props) => {
   const metricContent = (
     <>
@@ -32,9 +32,13 @@ const Metric = ({
         alt={alt}
         className={`rounded-full object-contain ${imgStyles}`}
       />
+
       <p className={`${textStyles} flex items-center gap-1`}>
         {value}
-        <span className={`small-regular line-clamp-1 ${isAuthor ? "max-sm:hidden" : ""}`}>
+
+        <span
+          className={`small-regular line-clamp-1 ${isAuthor ? "max-sm:hidden" : ""}`}
+        >
           {title}
         </span>
       </p>
@@ -51,3 +55,4 @@ const Metric = ({
 };
 
 export default Metric;
+

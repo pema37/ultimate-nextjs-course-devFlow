@@ -1,4 +1,3 @@
-import Navbar from '@/components/ui/navigation/navbar';
 import React, { ReactNode } from 'react';
 import Image from 'next/image';
 import SocialAuthForm from '@/components/forms/SocialAuthForm';

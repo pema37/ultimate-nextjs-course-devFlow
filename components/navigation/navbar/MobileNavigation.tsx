@@ -9,7 +9,7 @@ import {
 import Image from 'next/image';
 import Link from 'next/link';
 import ROUTES from '@/constants/routes';
-import { Button } from '../../button';
+import { Button } from '../../ui/button';
 import NavLinks from './NavLinks';
 
 
