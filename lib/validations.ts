@@ -106,3 +106,45 @@ export const UserSchema = z.object({
     .number()
     .optional(), // Reputation is optional
 });
+
+// Account Schema
+export const AccountSchema = z.object({
+  // User ID: Mandatory and validated as a MongoDB ObjectId
+  userId: z
+    .string()
+    .min(1, { message: "User ID is required." })
+    .regex(/^[a-fA-F0-9]{24}$/, { message: "Invalid User ID format." }),
+
+  // Account name: Mandatory
+  name: z
+    .string()
+    .min(1, { message: "Account name is required." }),
+
+  // Optional image URL
+  image: z
+    .string()
+    .url({ message: "Please provide a valid URL for the image." })
+    .optional(),
+
+  // Password: Optional, with validation rules
+  password: z
+    .string()
+    .min(6, { message: "Password must be at least 6 characters long." })
+    .max(100, { message: "Password cannot exceed 100 characters." })
+    .regex(/[A-Z]/, { message: "Password must contain at least one uppercase letter." })
+    .regex(/[a-z]/, { message: "Password must contain at least one lowercase letter." })
+    .regex(/[0-9]/, { message: "Password must contain at least one number." })
+    .regex(/[^a-zA-Z0-9]/, { message: "Password must contain at least one special character." })
+    .optional(),
+
+  // Authentication provider: Mandatory
+  provider: z
+    .string()
+    .min(1, { message: "Authentication provider is required." }),
+
+  // Provider Account ID: Mandatory and validated for format
+  providerAccountId: z
+    .string()
+    .min(1, { message: "Provider Account ID is required." })
+    .regex(/^[a-zA-Z0-9_-]+$/, { message: "Invalid Provider Account ID format." }),
+});
