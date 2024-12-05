@@ -4,6 +4,7 @@ import handleError from "@/lib/handlers/error";
 import { NotFoundError, ValidationError } from "@/lib/http-errors";
 import { AccountSchema } from "@/lib/validations";
 import Account from "@/database/account.model";
+import dbConnect from "@/lib/mongoose";
 
 // POST /api/accounts
 // Retrieve an account by providerAccountId
@@ -13,6 +14,8 @@ export async function POST(request: Request) {
   
   try {
 
+    await dbConnect();
+    
     // Validate the providerAccountId field
     const validatedData = AccountSchema.safeParse({ providerAccountId });
     if (!validatedData.success) {

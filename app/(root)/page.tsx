@@ -4,6 +4,8 @@ import ROUTES from "@/constants/routes";
 import Link from "next/link";
 import HomeFilter from "@/components/filters/HomeFilter";
 import QuestionCard from "@/components/cards/QuestionCard";
+import handleError from "@/lib/handlers/error";
+import { api } from "@/lib/api";
 
 
 
@@ -42,6 +44,15 @@ const questions = [
 ];
 
 
+const test = async () => {
+  try {
+    return await api.users.getAll();
+  } catch (error) {
+    return handleError(error);
+  }
+};
+
+
 interface SearchParams {
   searchParams: Promise<{ [key: string]: string}>
 }
@@ -49,6 +60,11 @@ interface SearchParams {
 
 
 const Home = async ({ searchParams }: SearchParams ) =>  {
+
+  const users = await test();
+
+  console.log(users);
+  
 
   const { query = "", filter = "" } = await searchParams;
 
