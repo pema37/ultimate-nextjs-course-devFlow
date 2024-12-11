@@ -5,7 +5,7 @@ import handleError from "@/lib/handlers/error";
 import { NotFoundError, ValidationError } from "@/lib/http-errors";
 import dbConnect from "@/lib/mongoose";
 import { AccountSchema } from "@/lib/validations";
-import { APIErrorResponse } from "@/app/types/global";
+import { APIErrorResponse } from "@/types/global";
 
 // GET /api/accounts/[id]
 // Fetch an account by its unique ID

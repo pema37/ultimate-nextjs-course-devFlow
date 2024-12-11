@@ -2,7 +2,7 @@ import User from "@/database/user.model"; // Mongoose User model
 import handleError from "@/lib/handlers/error"; // Custom error handler
 import { NotFoundError, ValidationError } from "@/lib/http-errors"; // Custom NotFoundError for 404 handling
 import dbConnect from "@/lib/mongoose"; // Establish a database connection
-import { APIErrorResponse } from "@/app/types/global"; // API error response type
+import { APIErrorResponse } from "@/types/global"; // API error response type
 import { NextResponse } from "next/server"; // Next.js response utilities
 import { UserSchema } from "@/lib/validations"; // Zod schema for user validation
 

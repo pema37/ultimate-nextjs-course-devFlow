@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { APIErrorResponse } from "@/app/types/global";
+import { APIErrorResponse } from "@/types/global";
 import User from "@/database/user.model";
 import handleError from "@/lib/handlers/error";
 import { NotFoundError, ValidationError } from "@/lib/http-errors";

@@ -1,7 +1,7 @@
 import logger from "../logger"; // Logger utility for logging events
 import handleError from "./error"; // Centralized error handling utility
 import { RequestError } from "../http-errors"; // Custom error class for HTTP errors
-import { ActionResponse } from "@/app/types/global";
+import { ActionResponse } from "@/types/global";
 
 // Extend FetchOptions to include timeout support
 interface FetchOptions extends RequestInit {

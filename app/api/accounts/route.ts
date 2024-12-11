@@ -4,7 +4,7 @@ import handleError from "@/lib/handlers/error"; // Centralized error handler
 import { ForbiddenError, ValidationError } from "@/lib/http-errors"; // Custom ForbiddenError for access issues
 import dbConnect from "@/lib/mongoose"; // Function to establish database connection
 import { AccountSchema } from "@/lib/validations"; // Validation schema for accounts
-import { APIErrorResponse } from "@/app/types/global";
+import { APIErrorResponse } from "@/types/global";
 
 // GET /api/accounts
 // Retrieve all accounts

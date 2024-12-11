@@ -1,26 +1,33 @@
 import { NextResponse } from "next/server";
-import { APIErrorResponse } from "@/app/types/global";
+import { APIErrorResponse } from "@/types/global";
 import handleError from "@/lib/handlers/error";
 import { NotFoundError, ValidationError } from "@/lib/http-errors";
-import { AccountSchema } from "@/lib/validations";
+import { z } from "zod"; // Import zod for custom validation
 import Account from "@/database/account.model";
 import dbConnect from "@/lib/mongoose";
 
-// POST /api/accounts
-// Retrieve an account by providerAccountId
-export async function POST(request: Request) {
-  // Parse the request body
-  const { providerAccountId } = await request.json();
-  
-  try {
+// Define a schema specifically for providerAccountId validation
+const ProviderAccountIdSchema = z.object({
+  providerAccountId: z
+    .string()
+    .min(1, { message: "Provider Account ID is required." })
+    .regex(/^[a-zA-Z0-9_-]+$/, { message: "Invalid Provider Account ID format." }),
+});
 
-    await dbConnect();
-    
+// POST /api/accounts/provider
+export async function POST(request: Request) {
+  try {
+    // Parse the request body
+    const { providerAccountId } = await request.json();
+
     // Validate the providerAccountId field
-    const validatedData = AccountSchema.safeParse({ providerAccountId });
+    const validatedData = ProviderAccountIdSchema.safeParse({ providerAccountId });
     if (!validatedData.success) {
       throw new ValidationError(validatedData.error.flatten().fieldErrors);
     }
+
+    // Connect to the database
+    await dbConnect();
 
     // Find the account by providerAccountId
     const account = await Account.findOne({ providerAccountId });

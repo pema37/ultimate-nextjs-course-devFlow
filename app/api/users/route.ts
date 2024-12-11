@@ -5,7 +5,7 @@ import handleError from "@/lib/handlers/error"; // Custom error handler
 import { ValidationError } from "@/lib/http-errors"; // Error type for validation issues
 import dbConnect from "@/lib/mongoose"; // Function to establish a database connection
 import { UserSchema } from "@/lib/validations"; // Validation schema for user data
-import { APIErrorResponse } from "@/app/types/global"; // Type for API error responses
+import { APIErrorResponse } from "@/types/global"; // Type for API error responses
 
 // Fetch all users
 export async function GET() {
